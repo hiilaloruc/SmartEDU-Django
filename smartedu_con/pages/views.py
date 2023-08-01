@@ -5,3 +5,6 @@ from django.shortcuts import render
 def index(request):
     #return HttpResponse('<h1>INDEX RESPONSE of Hilal</h1>' )
     return render(request,'index.html')
+
+def about(request):
+    return render(request,'about.html')
