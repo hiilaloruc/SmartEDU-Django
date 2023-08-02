@@ -9,11 +9,10 @@ class CourseAdmin(admin.ModelAdmin):
     list_filter = ('available','category')
     search_fields = ('name', 'description')
 
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
     
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',)}
-
-@admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}

@@ -1,43 +1,47 @@
 {% extends 'partials/_base.html' %}
-{% load static%}
-{%  block content %}
+{% load static %}
+
+{% block content %}
 
 	<div class="all-title-box">
 		<div class="container text-center">
-			<h1>{{course.name}}<span class="m_1">Check out the details of course on the following..</span></h1>
+			<h1>{{courses.category.name}}</span></h1>
 		</div>
 	</div>
-	
+
     <div id="overviews" class="section wb">
         <div class="container">
             <div class="row"> 
                 <div class="col-lg-9 blog-post-single">
-                    <div class="blog-item">
-						<div class="image-blog">
-							<img src="{{course.image.url}}" alt="" class="img-fluid">
-						</div>
-						<div class="post-content">
-							<div class="post-date">
-								<span class="day">#</span>
-								<span class="month">{{course.category}}</span>
-							</div>
-							
-							<div class="meta-info-blog">
-								<span><i class="fa fa-calendar"></i> <a href="#">{{ course.date|date:"M. j, Y" }}</a> </span>
-								<span><i class="fa fa-tag"></i>  <a href="#">{{course.category}}</a> </span>
-								<span><i class="fa fa-comments"></i> <a href="#">0 Comments</a></span>
-							</div>
-							<div class="blog-title">
-								<h2><a href="#" title="">{{course.name}}</a></h2>
-							</div>
-							<div class="blog-desc">
-								<blockquote class="default">
-									{{course.description}}
-								</blockquote>
-							</div>							
-						</div>
-					</div>
-					
+
+                    <div class="row"> 
+						{% for course in courses %}
+                        <div class="col-lg-6 col-md-6 col-12 mb-4">
+                            <div class="course-item">
+                                <div class="image-blog">
+                                    <img src="{{course.image.url}}" alt="" class="img-fluid" style="object-fit: cover;height: 200px;">
+                                </div>
+                                <div class="course-br">
+                                    <div class="course-title">
+                                        <h2><a href="/courses/{{course.category.slug}}/{{course.id}}" title="">{{course.name}}</a></h2>
+                                    </div>
+                                    <div class="course-desc">
+                                        <p>{{course.description | truncatechars:140}}</p>
+										
+                                    </div>
+                                </div>
+                                <div class="course-meta-bot">
+                                    <ul>
+                                        <li><i class="fa fa-calendar" aria-hidden="true"></i> 6 Month</li>
+                                        <li><i class="fa fa-users" aria-hidden="true"></i> 56 Student</li>
+                                        <li><i class="fa fa-hashtag" aria-hidden="true"></i><b>{{course.category}}</b> </li>
+										<p class="float-right"> <i> {{course.id}}</i></p>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- end col -->
+						{% endfor %}
+                    </div><!-- end row -->
 					<div class="blog-author">
 						<div class="author-bio">
 							<h3 class="author_name"><a href="#">Tom Jobs</a></h3>
@@ -55,7 +59,8 @@
 							</ul>
 						</div>
 					</div>
-				
+
+
                 </div><!-- end col -->
 				<div class="col-lg-3 col-12 right-single">
 					<div class="widget-search">
@@ -71,30 +76,21 @@
 					<div class="widget-categories">
 						<h3 class="widget-title">Categories</h3>
 						<ul>
-							{% for category in categories %}
-							<li>
-							 <a href="/courses/category/{{ category.slug }}">
+							{%for category in categories%}
+							<li><a href="{{category.slug}}">
 								{% if category.slug in request.path %}<strong>{% endif %}
 								{{ category.name }}
 								{% if category.slug in request.path %}</strong>{% endif %}
-							</a>
-							</li>
-							{% endfor %}
-						</ul>
+								
+							</a></li>
+							{%endfor%}
 
+						</ul>
 					</div>
 					<div class="widget-tags">
 						<h3 class="widget-title">Search Tags</h3>
 						<ul class="tags">
-							{%for tag in tags%}
-							<li><a href="{% url 'tag_detail' tag.slug %}">
-								{% if tag in course.tags.all %}<strong>{% endif %}
-								{{ tag.name }}
-								{% if tag in course.tags.all %}</strong>{% endif %}
-								
-							</a></li>
-							{%endfor%}
-							
+							<li><a href="#"><b>Tag1</b></a></li>
 						</ul>
 					</div>
 				</div>
@@ -102,4 +98,4 @@
         </div><!-- end container -->
     </div><!-- end section -->
 
-{% endblock %}
+	{% endblock %}
