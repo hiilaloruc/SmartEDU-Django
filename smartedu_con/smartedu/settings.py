@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pages.apps.PagesConfig' #pages uygulamasını ana projeye bağlar.(pages içerisindeki templates klasörünü de görmesini sağlar.)
+    'pages.apps.PagesConfig', #pages uygulamasını ana projeye bağlar.(pages içerisindeki templates klasörünü de görmesini sağlar.)
+    'courses.apps.CoursesConfig'
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Media files 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
