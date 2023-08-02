@@ -23,17 +23,19 @@
                                 </div>
                                 <div class="course-br">
                                     <div class="course-title">
-                                        <h2><a href="#" title="">{{course.name}}</a></h2>
+                                        <h2><a href="{{course.category.slug}}/{{course.id}}" title="">{{course.name}}</a></h2>
                                     </div>
                                     <div class="course-desc">
                                         <p>{{course.description | truncatechars:140}}</p>
+										
                                     </div>
                                 </div>
                                 <div class="course-meta-bot">
                                     <ul>
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i> 6 Month</li>
                                         <li><i class="fa fa-users" aria-hidden="true"></i> 56 Student</li>
-                                        <li><i class="fa fa-book" aria-hidden="true"></i> 7 Books</li>
+                                        <li><i class="fa fa-hashtag" aria-hidden="true"></i><b>{{course.category}}</b> </li>
+										<p class="float-right"> <i> {{course.id}}</i></p>
                                     </ul>
                                 </div>
                             </div>
