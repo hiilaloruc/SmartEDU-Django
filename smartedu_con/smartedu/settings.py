@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig', #pages uygulamasını ana projeye bağlar.(pages içerisindeki templates klasörünü de görmesini sağlar.)
-    'courses.apps.CoursesConfig'
+    'courses.apps.CoursesConfig',
+    'teachers.apps.TeachersConfig'
 ]
 
 MIDDLEWARE = [
