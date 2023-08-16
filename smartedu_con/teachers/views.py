@@ -4,7 +4,7 @@ from teachers.models import Teacher
 
 class TeacherListView(ListView):
     model = Teacher
-    template_name = 'teachers.html'
+    template_name = 'teachers.html'   
     context_object_name = 'teachers' #html içerisinde object_list değil de teacher olarak çağırmak için
     #paginate_by = 1
     #queryset = Teacher.objects.all()[:1]
